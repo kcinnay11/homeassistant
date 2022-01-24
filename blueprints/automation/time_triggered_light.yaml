@@ -13,24 +13,34 @@ blueprint:
       selector:
         time:
     target_light:
-      name: Target light
+      name: Light
       selector:
         target:
           entity:
             domain: light
 
 trigger:
-  platform: time
-  at: !input start_time
-  at: !input stop_time
+  - platform: time
+    at: !input start_time
+    id: trigger_start
+  - platform: time
+    at: !input stop_time
+    id: trigger_stop
 
 action:
-  service: >
-    {% if now() == today_at(start_time) %}
-      switch.turn_on
-    {% elif now() == today_at(stop_time) %}
-      switch.turn_off
-    {% endif %}
-  target: !input target_light   
-  mode: single
-  
+- choose:
+  - conditions:
+    - condition: trigger
+      id: trigger_start
+    sequence:
+    - service: light.turn_on
+      target: !input target_light
+  - conditions:
+    - condition: trigger
+      id: trigger_stop
+    sequence:
+    - service: light.turn_off
+      target: !input target_light
+  default:
+    - service: light.toggle
+      target: !input target_light
