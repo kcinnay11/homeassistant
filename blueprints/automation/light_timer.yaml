@@ -1,7 +1,7 @@
 blueprint:
-  name: Time triggered lights
-  description: Turn a light on based on Time
-  source_url: https://github.com/kcinnay11/homeassistant/edit/main/blueprints/automation/time_triggered_light.yaml
+  name: Light Timer
+  description: Turn a light on and off based on Time
+  source_url: https://github.com/kcinnay11/homeassistant/edit/main/blueprints/automation/light_timer.yaml
   domain: automation
   input:
     start_time:
