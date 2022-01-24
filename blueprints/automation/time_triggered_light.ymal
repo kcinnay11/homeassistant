@@ -5,15 +5,15 @@ blueprint:
   domain: automation
   input:
     start_time:
-      name: turn on time
+      name: Turn on time
       selector:
         time:
     stop_time:
-      name: turn off time
+      name: Turn off time
       selector:
         time:
     target_light:
-      name: target light
+      name: Target light
       selector:
         target:
           entity:
