@@ -1,0 +1,35 @@
+blueprint:
+  name: Time triggered lights
+  description: Turn a light on based on Time
+  domain: automation
+  input:
+    start_time:
+      name: turn on time
+      selector:
+        time:
+    stop_time:
+      name: turn off time
+      selector:
+        time:
+    target_light:
+      name: target light
+      selector:
+        target:
+          entity:
+            domain: light
+
+trigger:
+  platform: time
+  at: !input start_time
+  at: !input stop_time
+
+action:
+  service: >
+    {% if now() == today_at(start_time) %}
+      switch.turn_on
+    {% elif now() == today_at(stop_time) %}
+      switch.turn_off
+    {% endif %}
+  target: !input target_light   
+  mode: single
+  
