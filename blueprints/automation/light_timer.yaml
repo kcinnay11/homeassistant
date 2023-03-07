@@ -1,7 +1,6 @@
 blueprint:
   name: Light Timer
   description: Turn a light on and off based on Time
-  source_url: https://github.com/kcinnay11/homeassistant/edit/main/blueprints/automation/light_timer.yaml
   domain: automation
   input:
     start_time:
