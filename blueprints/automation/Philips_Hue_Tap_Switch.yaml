@@ -9,9 +9,6 @@ blueprint:
       name: Philips Hue Tap Switch
       selector:
         device:
-          integration: Philips Hue
-          manufacturer: Signify Netherlands B.V.
-          model: Hue tap dial switch (RDM002)
           multiple: false
     first_light:
       name: First Light
